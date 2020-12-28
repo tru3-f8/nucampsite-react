@@ -2,15 +2,6 @@ import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
 class CampsiteInfo extends Component { 
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: 'name',
-
-            description: 'description'
-
-        };
-    }
      renderCampsite(campsite) {
             return (
                 <div className='col-md-5 m-1'>
@@ -30,10 +21,13 @@ class CampsiteInfo extends Component {
             return (
               <div className='col-md-5 m-1'>
                   <h4>Comments</h4>
-                  {comments.map(comment => <div key={comment.id} 
-                  text={comment.text}
-                  author={comment.author} date={comment.author}>
-                  </div>)}
+                    {this.props.campsite.comments.map(comment => <div key={comment.id}>
+                    <div>--{comment.text}
+                    <br></br>
+                    {comment.author} {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</div>
+                    <br></br>
+                    
+                     </div>)}
             </div> 
             );   
             } else {
@@ -44,7 +38,7 @@ class CampsiteInfo extends Component {
                 );
             }
     }
-    
+     
 
         
     render() {
@@ -52,7 +46,7 @@ class CampsiteInfo extends Component {
             return (
                 <div className='row'>
                    {this.renderCampsite()}
-                   {this.renderComments([])}
+                   {this.renderComments(this.props.campsite.comments)}
                 </div>
             );
 
