@@ -24,7 +24,7 @@ function RenderComments({ comments }) {
                 {comments.map(comment => <div key={comment.id}>
                 <div>--{comment.text}
                 <br></br>
-                {comment.author} {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</div>
+                {comment.author}{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</div>
                 <br></br>
                 
                     </div>)}
